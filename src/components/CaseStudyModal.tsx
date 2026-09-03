@@ -155,3 +155,90 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({ project, onClose
                 ))}
               </div>
             </section>
+
+            {/* 05 — IMPLEMENTATION */}
+            <section className="space-y-3">
+              <div className="font-mono text-xs text-[#7CFF4F] font-bold flex items-center space-x-2">
+                <Code2 className="w-4 h-4 text-[#7CFF4F]" />
+                <span>05 — IMPLEMENTATION</span>
+              </div>
+              <p className="text-xs text-[#9AA4AA]">{caseStudy.implementationDetails}</p>
+
+              {caseStudy.codeSnippet && (
+                <div className="bg-[#080A0C] border border-[#20282D] rounded-md overflow-hidden font-mono text-xs">
+                  <div className="bg-[#11171B] border-b border-[#20282D] px-3 py-1.5 text-[11px] text-[#5F696F] flex justify-between">
+                    <span>{caseStudy.codeSnippet.filename}</span>
+                    <span>{caseStudy.codeSnippet.language.toUpperCase()}</span>
+                  </div>
+                  <pre className="p-4 text-[#F1F3F4] overflow-x-auto text-[11px] leading-relaxed">
+                    <code>{caseStudy.codeSnippet.code}</code>
+                  </pre>
+                </div>
+              )}
+            </section>
+
+            {/* 06 — CHALLENGES */}
+            <section className="space-y-3">
+              <div className="font-mono text-xs text-[#FFB84D] font-bold flex items-center space-x-2">
+                <AlertTriangle className="w-4 h-4" />
+                <span>06 — CHALLENGES & CONSTRAINTS</span>
+              </div>
+              <ul className="space-y-2 font-mono text-xs">
+                {caseStudy.challenges.map((ch, idx) => (
+                  <li key={idx} className="bg-[#080A0C] border border-[#20282D] p-3 rounded text-[#9AA4AA] flex items-start space-x-2">
+                    <span className="text-[#FFB84D]">!</span>
+                    <span>{ch}</span>
+                  </li>
+                ))}
+              </ul>
+            </section>
+
+            {/* 07 — RESULTS */}
+            <section className="space-y-3">
+              <div className="font-mono text-xs text-[#7CFF4F] font-bold flex items-center space-x-2">
+                <Award className="w-4 h-4 text-[#7CFF4F]" />
+                <span>07 — MEASURABLE RESULTS</span>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 font-mono text-xs">
+                {caseStudy.results.map((res, idx) => (
+                  <div key={idx} className="bg-[#080A0C] border border-[#20282D] p-4 rounded text-center space-y-1">
+                    <div className="text-xl font-extrabold text-[#7CFF4F]">{res.value}</div>
+                    <div className="text-xs text-[#F1F3F4]">{res.metric}</div>
+                    <div className="text-[10px] text-[#5F696F]">{res.context}</div>
+                  </div>
+                ))}
+              </div>
+            </section>
+
+            {/* 08 — WHAT I LEARNED */}
+            <section className="space-y-3">
+              <div className="font-mono text-xs text-[#53D8FF] font-bold flex items-center space-x-2">
+                <FileText className="w-4 h-4 text-[#53D8FF]" />
+                <span>08 — WHAT I LEARNED</span>
+              </div>
+              <ul className="space-y-2 font-mono text-xs">
+                {caseStudy.lessonsLearned.map((lesson, idx) => (
+                  <li key={idx} className="bg-[#080A0C] border border-[#20282D] p-3 rounded text-[#F1F3F4]">
+                    • {lesson}
+                  </li>
+                ))}
+              </ul>
+            </section>
+
+          </div>
+
+          {/* Footer Bar */}
+          <div className="bg-[#11171B] border-t border-[#20282D] px-6 py-3 flex justify-end font-mono text-xs">
+            <button
+              onClick={onClose}
+              className="bg-[#20282D] hover:bg-[#2E3A42] text-[#F1F3F4] px-4 py-2 rounded transition-colors"
+            >
+              CLOSE SPECIFICATION
+            </button>
+          </div>
+
+        </motion.div>
+      </div>
+    </AnimatePresence>
+  );
+};
