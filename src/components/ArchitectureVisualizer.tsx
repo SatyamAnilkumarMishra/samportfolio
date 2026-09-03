@@ -62,17 +62,7 @@ export const ArchitectureVisualizer: React.FC = () => {
       contract: 'Reciprocal Rank Fusion (Dense + Sparse)',
       details: 'Combines dense vector similarity with BM25 lexical ranking followed by Cross-Encoder re-ranking.'
     },
-        {
-      id: 'model',
-      step: '05',
-      name: 'MODEL',
-      type: 'LLM Orchestrator',
-      icon: <Cpu className="w-4 h-4 text-[#7CFF4F]" />,
-      latency: '110.0ms',
-      throughput: '140 tok/s',
-      contract: 'Zero-temperature structured JSON streaming',
-      details: 'Dispatches bounded prompts to target model endpoints (OpenAI / Anthropic / Local vLLM).'
-    },
+    
     {
       id: 'evaluation',
       step: '06',
@@ -206,4 +196,3 @@ export const ArchitectureVisualizer: React.FC = () => {
     </section>
   );
 };
-
