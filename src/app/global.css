@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-main: #080A0C;
+  --bg-surface: #0D1114;
+  --bg-elevated: #11171B;
+  --border-color: #20282D;
+  --accent-green: #7CFF4F;
+  --accent-cyan: #53D8FF;
+  --accent-amber: #FFB84D;
+}
+
+body {
+  background-color: var(--bg-main);
+  color: #F1F3F4;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  overflow-x: hidden;
+  selection-background-color: #7CFF4F;
+  selection-color: #080A0C;
+}
+
+::selection {
+  background: #7CFF4F;
+  color: #080A0C;
+}
+
+/* Engineering OS Grid overlay */
+.bg-tech-grid {
+  background-image: 
+    linear-gradient(to right, rgba(32, 40, 45, 0.4) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(32, 40, 45, 0.4) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+.bg-tech-dots {
+  background-image: radial-gradient(rgba(154, 164, 170, 0.15) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Custom subtle scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #080A0C;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #20282D;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #7CFF4F;
+}
+
+/* Terminal Cursor animation */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.animate-cursor {
+  animation: blink 1s infinite;
+}
+
+/* Glow effects */
+.glow-green {
+  box-shadow: 0 0 15px rgba(124, 255, 79, 0.15);
+}
+
+.glow-cyan {
+  box-shadow: 0 0 15px rgba(83, 216, 255, 0.15);
+}
+
+.text-glow-green {
+  text-shadow: 0 0 8px rgba(124, 255, 79, 0.4);
+}
