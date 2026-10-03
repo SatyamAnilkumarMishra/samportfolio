@@ -45,10 +45,17 @@ export const ContactTerminal: React.FC = () => {
   ]);
 
   const [copied, setCopied] = useState(false);
-  const bottomRef = useRef<HTMLDivElement>(null);
+  const terminalBodyRef = useRef<HTMLDivElement>(null);
+  const isFirstRender = useRef(true);
 
   useEffect(() => {
-    bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
+    }
+    if (terminalBodyRef.current) {
+      terminalBodyRef.current.scrollTop = terminalBodyRef.current.scrollHeight;
+    }
   }, [history]);
 
   const handleCopyEmail = () => {
@@ -223,7 +230,7 @@ export const ContactTerminal: React.FC = () => {
             </div>
 
             {/* Terminal Output Scroll Area */}
-            <div className="p-4 font-mono text-xs flex-1 overflow-y-auto space-y-3">
+            <div ref={terminalBodyRef} className="p-4 font-mono text-xs flex-1 overflow-y-auto space-y-3">
               <div className="text-[#5F696F] text-[11px] border-b border-[#20282D]/50 pb-2">
                 Satyam Mishra OS Terminal [Version 2.4.0]<br />
                 Type a command or use interactive links.
@@ -238,7 +245,6 @@ export const ContactTerminal: React.FC = () => {
                   <div className="pl-4">{item.output}</div>
                 </div>
               ))}
-              <div ref={bottomRef} />
             </div>
 
             {/* Command Input Form */}
@@ -264,4 +270,3 @@ export const ContactTerminal: React.FC = () => {
     </section>
   );
 };
-
